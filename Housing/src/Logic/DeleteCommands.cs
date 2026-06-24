@@ -6,7 +6,7 @@ public class DeleteCommand
     public int id;
     public string[] Arguments;
 
-    public void DeleteHandller(HRepository repository)
+    public void DeleteHandler(HRepository repository)
     {
         // у инпутюзера взять айди и отправить в гетхайусинг 
         Arguments = UserInputHandler.userHandler();
