@@ -1,4 +1,4 @@
-﻿public class Housing
+﻿public abstract class Housing
 {
     public int Id {  get; set; }
     public HousingType Type { get; set; }

@@ -9,17 +9,19 @@ public class CreateCommand
     public Housing hous;
 
 
-    public void CreateHandler(HRepository repository)
+    public  void CreateHandler(HRepository repository)
     {
         
         // примерно будет вызываться в switch
         Arguments = UserInputHandler.userHandler();
         repo = repository;
+        WorkWithRepo();
     }
     public void WorkWithRepo()
 
     {
         HousingType type = Enum.Parse<HousingType>(Arguments[1]); 
+       
         string country = Arguments[2];
         string city = Arguments[3];
         string region = Arguments[4];
