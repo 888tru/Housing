@@ -7,7 +7,7 @@ public class UpdateCommands : ILogic
 
     {
         string[] Aguments  = UserInputHandler.userHandler();
-        Housing hous = ArgsHandler.TypeChoosing();
+        Housing hous = ;
         repository.UpdateHousing(int.Parse(Aguments[0]), hous);
 
     }

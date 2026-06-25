@@ -13,58 +13,64 @@ public class Program
                 CommandsPrint.PrintCommands();
                 string whichCommand = Console.ReadLine();
 
-                if (!int.TryParse(whichCommand, out int id))
+                if (!int.TryParse(whichCommand, out int id) || (1 > id || id > 7))
                 {
-                    Console.WriteLine("Invalid input. Please enter a valid integer.");
+                   
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
                 }
-                switch (whichCommand)
+                else
                 {
-                    case "1":
-                        {
-                            CreateCommand command = new CreateCommand();
-                            command.Execute(repository);
-                            break;
-                        }
-                    case "2":
-                        {
-                            GetCommand command = new GetCommand();
-                            command.Execute(repository);
-                            break;
-                        }
-                    case "3":
-                        {
-                            GetAllCommands command = new GetAllCommands();
-                            command.Execute(repository);
-                            break;
-                        }
-                
-                    case "4":
-                        {
-                            UpdateCommands commands = new UpdateCommands();
-                            commands.Execute(repository);
-                            break;
-                        }
-                    case "5":
-                        {
-                            DeleteCommand command = new DeleteCommand();
-                            command.Execute(repository);
-                            break;
-                        }
-                  
-                    case "6":
-                        {
-                            HelpCommands.Execute();
-                            break;
-                        }
-                    case "7":
-                        Console.WriteLine("Exiting the program.");
-                        return;
+                    switch (id)
+                    {
+                        case 1:
+                            {
+                                CreateCommand command = new CreateCommand();
+                                command.Execute(repository);
+                                break;
+                            }
+                        case 2:
+                            {
+                                GetCommand command = new GetCommand();
+                                command.Execute(repository);
+                                break;
+                            }
+                        case 3:
+                            {
+                                GetAllCommands command = new GetAllCommands();
+                                command.Execute(repository);
+                                break;
+                            }
 
+                        case 4:
+                            {
+                                UpdateCommands commands = new UpdateCommands();
+                                commands.Execute(repository);
+                                break;
+                            }
+                        case 5:
+                            {
+                                DeleteCommand command = new DeleteCommand();
+                                command.Execute(repository);
+                                break;
+                            }
+
+                        case 6:
+                            {
+                                HelpCommands.Execute();
+                                break;
+                            }
+                        case 7:
+                            {
+                                Console.WriteLine("Exiting the program.");
+                                return;
+                            } 
                 }
 
 
             }
-        } catch(Exception ex) {
+        }
+        }
+        catch (Exception ex) {
             Console.WriteLine(ex.Message);
             return;
         }
