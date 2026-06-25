@@ -11,8 +11,16 @@
     }
 
 
-    public override string ToString()
-    {
-        return $"Type: {Type}, Country: {Country}, City: {City}, Region: {Region}, Price: {Price}, Rooms: {Rooms}, Area: {Area}, House Floors: {HouseFloors}, Land Area: {LandArea}";
-    }
+    public override string ToString() => $"""
+    [ Информация об объекте ]
+    ---------------------------------
+    Тип:          {Type}
+    Локация:      {Country}, {Region}, {City}
+    Цена:         {Price:N0} KZT
+    Параметры:    {Rooms} комн. | {Area} м
+    Этажность:    {HouseFloors} эт.
+    Участок:      {LandArea} сот.
+    ---------------------------------
+    """;
+
 }

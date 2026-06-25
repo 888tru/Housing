@@ -12,7 +12,9 @@ public class Program
             {
 
                 CommandsPrint.PrintCommands();
+              
                 string input = Console.ReadLine();
+                Console.WriteLine();
                 string[] parts = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length == 0) { 
                     Console.WriteLine("No command entered. Please try again.");
@@ -62,6 +64,12 @@ public class Program
                             HelpCommands.Execute();
                             break;
                         }
+                    case "/load": 
+                        {
+                            LoadCommand.Execute(repository);
+                            break;
+                        }
+
                     case "/exit":
                         {
                             Console.WriteLine("Exiting the program.");

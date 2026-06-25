@@ -7,4 +7,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties src_4storage_4mystorage_1json__JsonSchema="https://acp-protocol.dev/schemas/v1/primer.schema.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

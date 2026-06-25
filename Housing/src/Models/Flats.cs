@@ -12,10 +12,18 @@
         ResComplxType = resComplxType;
     }
 
-    public override string ToString()
-    {
-       return $"Type: {Type}, Country: {Country}, City: {City}, Region: {Region}, Price: {Price}, Rooms: {Rooms}, Area: {Area}, Floors: {Floors}, Residential Complex Name: {ResCompName}, Residential Complex Type: {ResComplxType}";
-    }
+    public override string ToString() => $"""
+    [ Информация об объекте ]
+    ---------------------------------
+    Тип:          {Type}
+    ЖК:           {ResCompName} ({ResComplxType})
+    Локация:      {Country}, {Region}, {City}
+    Цена:         {Price:N0} $
+    Параметры:    {Rooms} комн. | {Area} м
+    Этаж/Этажи:   {Floors}
+    ---------------------------------
+    """;
+
 
 }
 

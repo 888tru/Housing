@@ -1,16 +1,22 @@
-﻿public class HRepository : IStorage
+﻿using System.Collections;
+using System.Text.Json;
+
+public class HRepository : IStorage
 {
     List<Housing> arrHousing = new List<Housing>();
     int id;
 
     public string CreateHousing(Housing housing)
     {
+
+
         if (housing == null)
         {
             return "Housing object cannot be null";
         }
         housing.Id = id++;
         arrHousing.Add(housing);
+        SaveToFile.saveToFile(arrHousing);
         return "Succesfully added!";
     }
 
@@ -48,5 +54,18 @@
     public List<Housing> GetAllHousing()
     {
         return arrHousing;
+    }
+
+
+    public string LoadFromFile() {
+        string filePath = "myStorage.json";
+        if (!File.Exists(filePath))
+        {
+            return "No saved data found.";
+        }
+        string jsonString = File.ReadAllText(filePath);
+        var loaded = JsonSerializer.Deserialize<List<Housing>>(jsonString);
+        arrHousing = loaded ?? new List<Housing>();
+        return "Data loaded successfully.";
     }
 }

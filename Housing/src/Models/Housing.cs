@@ -1,4 +1,9 @@
-﻿public abstract class Housing
+﻿using System.Text.Json.Serialization;
+
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+[JsonDerivedType(typeof(Houses), typeDiscriminator: "house")]
+[JsonDerivedType(typeof(Flats), typeDiscriminator: "flat")]
+public abstract class Housing
 {
     public int Id {  get; set; }
     public HousingType Type { get; set; }
