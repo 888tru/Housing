@@ -10,65 +10,73 @@ public class Program
             UserInputHandler userInputHandler = new UserInputHandler();
             while (true)
             {
+
                 CommandsPrint.PrintCommands();
-                string whichCommand = Console.ReadLine();
-
-                if (!int.TryParse(whichCommand, out int id) || (1 > id || id > 7))
-                {
-                   
-                Console.WriteLine("Invalid input. Please enter a valid integer.");
+                string input = Console.ReadLine();
+                string[] parts = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length == 0) { 
+                    Console.WriteLine("No command entered. Please try again.");
+                    continue;
                 }
-                else
+                string whichCommand = parts[0];
+                string[] Argumets = parts.Skip(1).ToArray();
+
+
+
+                switch (whichCommand)
                 {
-                    switch (id)
-                    {
-                        case 1:
-                            {
-                                CreateCommand command = new CreateCommand();
-                                command.Execute(repository);
-                                break;
-                            }
-                        case 2:
-                            {
-                                GetCommand command = new GetCommand();
-                                command.Execute(repository);
-                                break;
-                            }
-                        case 3:
-                            {
-                                GetAllCommands command = new GetAllCommands();
-                                command.Execute(repository);
-                                break;
-                            }
+                    case "/add":
+                        {
+                            CreateCommand command = new CreateCommand();
+                            command.Execute(repository, Argumets);
+                            break;
+                        }
+                    case "/get":
+                        {
+                            GetCommand command = new GetCommand();
+                            command.Execute(repository, Argumets);
+                            break;
+                        }
+                    case "/getAll":
+                        {
+                            GetAllCommands command = new GetAllCommands();
+                            command.Execute(repository, Argumets);
+                            break;
+                        }
 
-                        case 4:
-                            {
-                                UpdateCommands commands = new UpdateCommands();
-                                commands.Execute(repository);
-                                break;
-                            }
-                        case 5:
-                            {
-                                DeleteCommand command = new DeleteCommand();
-                                command.Execute(repository);
-                                break;
-                            }
+                    case "/update":
+                        {
+                            UpdateCommands commands = new UpdateCommands();
+                            commands.Execute(repository, Argumets);
+                            break;
+                        }
+                    case "/delete":
+                        {
+                            DeleteCommand command = new DeleteCommand();
+                            command.Execute(repository, Argumets);
+                            break;
+                        }
 
-                        case 6:
-                            {
-                                HelpCommands.Execute();
-                                break;
-                            }
-                        case 7:
-                            {
-                                Console.WriteLine("Exiting the program.");
-                                return;
-                            } 
+                    case "/help":
+                        {
+                            HelpCommands.Execute();
+                            break;
+                        }
+                    case "/exit":
+                        {
+                            Console.WriteLine("Exiting the program.");
+                            return;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Please enter correct command from list");
+                            break;
+                        }
                 }
 
 
             }
-        }
+        
         }
         catch (Exception ex) {
             Console.WriteLine(ex.Message);

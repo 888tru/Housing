@@ -2,36 +2,35 @@
 
 public class ArgsHandler
 {
-    public static Housing TypeChoosing()
+    public static Housing TypeChoosing(string[] strings)
     {
         try
         {
-            string[] Arguments = UserInputHandler.userHandler();
+            string[] Arguments = strings;
             if (Arguments.Length < 8)
             {
                 Console.WriteLine("Not enough arguments");
                 return null;
             }
-            HousingType hType = Enum.Parse<HousingType>(Arguments[1]);
-            string country = Arguments[2];
-            string city = Arguments[3];
-            string region = Arguments[4];
-            int price = int.Parse(Arguments[5]);
-            int rooms = int.Parse(Arguments[6]);
-            float area = float.Parse(Arguments[7]);
-            string type = Arguments[0];
-            switch (type)
+            HousingType hType = Enum.Parse<HousingType>(Arguments[0]);
+            string country = Arguments[1];
+            string city = Arguments[2];
+            string region = Arguments[3];
+            int price = int.Parse(Arguments[4]);
+            int rooms = int.Parse(Arguments[5]);
+            float area = float.Parse(Arguments[6], System.Globalization.CultureInfo.InvariantCulture);
+            switch (hType)
             {
-                case "house":
-                    int houseFloors = int.Parse(Arguments[8]);
-                    float landArea = float.Parse(Arguments[9]);
+                case HousingType.house:
+                    int houseFloors = int.Parse(Arguments[7]);
+                    float landArea = float.Parse(Arguments[8], System.Globalization.CultureInfo.InvariantCulture);
                     Housing house = new Houses(hType, country, city, region, price, rooms, area, houseFloors, landArea);
                     return house;
 
-                case "flat":
-                    int floors = int.Parse(Arguments[8]);
-                    string resCompName = Arguments[9];
-                    ResComplxType resComplxType = Enum.Parse<ResComplxType>(Arguments[10]);
+                case HousingType.flat:
+                    int floors = int.Parse(Arguments[7]);
+                    string resCompName = Arguments[8];
+                    ResComplxType resComplxType = Enum.Parse<ResComplxType>(Arguments[9]);
                     Housing flat = new Flats(hType, country, city, region, price, rooms, area, floors, resCompName, resComplxType);
                     return flat;
                 default:

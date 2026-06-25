@@ -1,6 +1,6 @@
 ﻿public class GetAllCommands : ILogic
 {
-    public void Execute(IStorage repository)
+    public void Execute(IStorage repository, string[] args)
     {
         foreach (var housing in repository.GetAllHousing())
         {

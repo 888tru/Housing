@@ -3,13 +3,13 @@ public class UserInputHandler
 {
     public static string[] userHandler()
     {
-        Console.Write("Please enter your command: ");
-        string commands = Console.ReadLine();
-        string[] arrOfCommands = commands.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+        CommandsPrint.PrintCommands();
+        string input = Console.ReadLine();
+        string[] parts = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+        string[] Argumets = parts.Skip(1).ToArray();
 
-      
-        
-        
-        return arrOfCommands;
+
+
+        return Argumets;
     }
 }
