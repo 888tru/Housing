@@ -2,7 +2,10 @@
 {
     public void Execute(IStorage repository)
     {
-        Console.WriteLine(repository.GetAllHousing());
+        foreach (var housing in repository.GetAllHousing())
+        {
+            Console.WriteLine(housing);
+        }
     }
 
 }
