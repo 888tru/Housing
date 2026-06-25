@@ -1,5 +1,5 @@
 ﻿public enum HousingType
 {
-    House,
+    house,
     flat
 }

@@ -1,6 +1,6 @@
 ﻿using InputHandler;
 
-public class DeleteCommand
+public class DeleteCommand : ILogic
 {
     public HRepository repo;
     public int id;

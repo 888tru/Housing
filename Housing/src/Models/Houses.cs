@@ -9,4 +9,10 @@
         HouseFloors = houseFloors;
         LandArea = landArea;
     }
+
+
+    public override string ToString()
+    {
+        return $"Type: {Type}, Country: {Country}, City: {City}, Region: {Region}, Price: {Price}, Rooms: {Rooms}, Area: {Area}, House Floors: {HouseFloors}, Land Area: {LandArea}";
+    }
 }

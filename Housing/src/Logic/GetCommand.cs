@@ -1,6 +1,6 @@
 ﻿using InputHandler;
 
-public class GetCommand
+public class GetCommand : ILogic
 {
     public HRepository repo;
     public int id;
@@ -17,6 +17,10 @@ public class GetCommand
     public void WorkWithRepo()
     {
         id = int.Parse(Arguments[0]);
+        if (id != null)
+        {
+            return;
+        }
         hous = repo.GetHousing(id);
         Console.WriteLine(hous);
     }

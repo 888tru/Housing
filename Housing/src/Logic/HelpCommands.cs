@@ -2,6 +2,10 @@
 {
     public static void HelpHandler()
     {
+        WorkWithRepo();
+    }
+    public static void WorkWithRepo()
+    {
         Console.WriteLine("Welcome to the Housing Management Application!");
         Console.WriteLine("Here are the available commands and how to use them:");
         Console.WriteLine();

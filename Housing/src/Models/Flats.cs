@@ -12,4 +12,11 @@
         ResComplxType = resComplxType;
     }
 
+    public override string ToString()
+    {
+       return $"Type: {Type}, Country: {Country}, City: {City}, Region: {Region}, Price: {Price}, Rooms: {Rooms}, Area: {Area}, Floors: {Floors}, Residential Complex Name: {ResCompName}, Residential Complex Type: {ResComplxType}";
+    }
+
 }
+
+
