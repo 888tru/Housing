@@ -1,94 +1,94 @@
-﻿using InputHandler;
+﻿
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        try
-        {
+        
             IStorage repository = new HRepository();
-            UserInputHandler userInputHandler = new UserInputHandler();
             while (true)
             {
-
-                CommandsPrint.PrintCommands();
-              
-                string input = Console.ReadLine();
-                Console.WriteLine();
-                string[] parts = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-                if (parts.Length == 0) { 
-                    Console.WriteLine("No command entered. Please try again.");
-                    continue;
-                }
-                string whichCommand = parts[0];
-                string[] Argumets = parts.Skip(1).ToArray();
-
-
-
-                switch (whichCommand)
+                try
                 {
-                    case "/add":
+
+                    CommandsPrint.PrintCommands();
+
+                    string input = Console.ReadLine();
+                    Console.WriteLine();
+                    string[] parts = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length == 0)
+                    {
+                        Console.WriteLine("No command entered. Please try again.");
+                        continue;
+                    }
+
+                    string whichCommand = parts[0];
+                    string[] Argumets = parts.Skip(1).ToArray();
+
+
+
+                    switch (whichCommand)
+                    {
+                        case "/add":
                         {
                             CreateCommand command = new CreateCommand();
                             command.Execute(repository, Argumets);
                             break;
                         }
-                    case "/get":
+                        case "/get":
                         {
                             GetCommand command = new GetCommand();
                             command.Execute(repository, Argumets);
                             break;
                         }
-                    case "/getAll":
+                        case "/getAll":
                         {
                             GetAllCommands command = new GetAllCommands();
                             command.Execute(repository, Argumets);
                             break;
                         }
 
-                    case "/update":
+                        case "/update":
                         {
                             UpdateCommands commands = new UpdateCommands();
                             commands.Execute(repository, Argumets);
                             break;
                         }
-                    case "/delete":
+                        case "/delete":
                         {
                             DeleteCommand command = new DeleteCommand();
                             command.Execute(repository, Argumets);
                             break;
                         }
 
-                    case "/help":
+                        case "/help":
                         {
                             HelpCommands.Execute();
                             break;
                         }
-                    case "/load": 
+                        case "/load":
                         {
                             LoadCommand.Execute(repository);
                             break;
                         }
 
-                    case "/exit":
+                        case "/exit":
                         {
                             Console.WriteLine("Exiting the program.");
                             return;
                         }
-                    default:
+                        default:
                         {
                             Console.WriteLine("Please enter correct command from list");
                             break;
                         }
+                    }
+                    
+
+                }catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
                 }
-
-
             }
-        
-        }
-        catch (Exception ex) {
-            Console.WriteLine(ex.Message);
-            return;
-        }
+
     }
 }

@@ -1,34 +1,45 @@
 ﻿public class HelpCommands
 {
-
     public static void Execute()
     {
-        Console.WriteLine("Welcome to the Housing Management Application!");
-        Console.WriteLine("Here are the available commands and how to use them:");
+        Console.WriteLine("╔══════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              HOUSING MANAGEMENT — СПРАВКА                    ║");
+        Console.WriteLine("╚══════════════════════════════════════════════════════════════╝");
         Console.WriteLine();
-        Console.WriteLine("1. /add - Add a new housing entry");
-        Console.WriteLine("   Usage: /add <Type> <Country> <City> <Region> <Price> <Rooms> <Area>");
-        Console.WriteLine("   Example: /add Apartment USA NewYork Manhattan 500000 3 120.5");
+
+        Console.WriteLine("── ДОБАВИТЬ ────────────────────────────────────────────────────");
+        Console.WriteLine("  /add <тип> <страна> <город> <район> <цена> <комнат> <площадь> [доп. поля]");
         Console.WriteLine();
-        Console.WriteLine("2. /get - Retrieve a housing entry by ID");
-        Console.WriteLine("   Usage: /get <ID>");
-        Console.WriteLine("   Example: /get 1");
+        Console.WriteLine("  Тип: house | flat");
         Console.WriteLine();
-        Console.WriteLine("3. /getAll - Retrieve all housing entries");
-        Console.WriteLine("   Usage: /getAll");
+        Console.WriteLine("  Для дома (house) — два доп. поля:");
+        Console.WriteLine("    <этажность> <площадь_участка>");
+        Console.WriteLine("    /add house Kazakhstan Almaty Alatau 50000000 4 120.5 2 8.0");
         Console.WriteLine();
-        Console.WriteLine("4. /update - Update an existing housing entry by ID");
-        Console.WriteLine("   Usage: /update <ID> <Type> <Country> <City> <Region> <Price> <Rooms> <Area>");
-        Console.WriteLine("   Example: /update 1 Apartment USA NewYork Manhattan 550000 3 125.0");
+        Console.WriteLine("  Для квартиры (flat) — три доп. поля:");
+        Console.WriteLine("    <этаж> <название_ЖК> <класс_ЖК>");
+        Console.WriteLine("    Классы ЖК: economy | comfort | business | premium");
+        Console.WriteLine("    /add flat Kazakhstan Almaty Bostandyk 25000000 3 85.0 12 Alatau comfort");
         Console.WriteLine();
-        Console.WriteLine("5. delete - Delete a housing entry by ID");
-        Console.WriteLine("   Usage: /delete <ID>");
-        Console.WriteLine("   Example: /delete 1");
+
+        Console.WriteLine("── ПРОСМОТР ─────────────────────────────────────────────────────");
+        Console.WriteLine("  /get <id>       — показать одну запись");
+        Console.WriteLine("  /getAll         — показать все записи");
         Console.WriteLine();
-        Console.WriteLine("6. /help - Shows how to work with the app");
-        Console.WriteLine("   Usage: /help");
+
+        Console.WriteLine("── ИЗМЕНЕНИЕ ────────────────────────────────────────────────────");
+        Console.WriteLine("  /update <тип> <страна> <город> <район> <цена> <комнат> <площадь> [доп. поля]");
+        Console.WriteLine("  (те же аргументы что у /add, ID спросит сам)");
         Console.WriteLine();
-        Console.WriteLine("7. /exit - Exit the application");
-        Console.WriteLine("   Usage: /exit");
+
+        Console.WriteLine("── УДАЛЕНИЕ ─────────────────────────────────────────────────────");
+        Console.WriteLine("  /delete <id>    — удалить запись по ID");
+        Console.WriteLine();
+
+        Console.WriteLine("── ПРОЧЕЕ ───────────────────────────────────────────────────────");
+        Console.WriteLine("  /load           — загрузить данные из файла");
+        Console.WriteLine("  /help           — эта справка");
+        Console.WriteLine("  /exit           — выход");
+        Console.WriteLine();
     }
 }

@@ -1,7 +1,7 @@
 ﻿public enum ResComplxType
 {
-    Economy,
-    Comfort,
-    Business,
-    Premium
+    economy,
+    comfort,
+    business,
+    premium
 }

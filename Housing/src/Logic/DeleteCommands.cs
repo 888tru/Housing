@@ -1,14 +1,20 @@
-﻿using InputHandler;
+﻿
 
 public class DeleteCommand : ILogic
 {
 
     public void Execute(IStorage repo, string[] args){
-        // у инпутюзера взять айди и отправить в гетхайусинг 
-        string[] Arguments = args;
-        int id = int.Parse(Arguments[0]);
-        string Str = repo.DeleteHousing(id);
-        Console.WriteLine(Str);
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Please enter id");
+            return;
+        }
+        // у инпутюзера взять айди и отправить в тхайусинг 
+        if(int.TryParse(args[0], out int id)){
+            string Str = repo.DeleteHousing(id);
+            Console.WriteLine(Str);
+        }
+        
     }
    
 

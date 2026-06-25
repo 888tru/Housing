@@ -1,4 +1,4 @@
-using InputHandler;
+
 
 public class UpdateCommands : ILogic
 {
@@ -8,9 +8,16 @@ public class UpdateCommands : ILogic
     {
         //  пока хзз как реализовать , но нужно будет передавать в метод UpdateHousing id и housing, который мы хотим обновить
         Console.Write("Enter ID to update: ");
-        int id = int.Parse(Console.ReadLine());
-        Housing hous = ArgsHandler.TypeChoosing(args);
-        repository.UpdateHousing(id, hous);
+        if (int.TryParse(Console.ReadLine(), out int id))
+        {
+            Housing hous = ArgsHandler.TypeChoosing(args);
+            repository.UpdateHousing(id, hous);
+        }
+        else
+        {
+            Console.WriteLine("Please enter integer");
+        }
+
 
     }
 }

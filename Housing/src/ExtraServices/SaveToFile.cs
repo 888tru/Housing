@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 public class SaveToFile
 {
-    public static void saveToFile(List<Housing> arrHousing)
+    public static void Save(List<Housing> arrHousing)
     {
         string filePath = "myStorage.json";
         var options = new JsonSerializerOptions { WriteIndented = true };

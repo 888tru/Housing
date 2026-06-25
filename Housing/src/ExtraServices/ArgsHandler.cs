@@ -1,4 +1,4 @@
-﻿using InputHandler;
+﻿
 
 public class ArgsHandler
 {
@@ -19,6 +19,9 @@ public class ArgsHandler
             int price = int.Parse(Arguments[4]);
             int rooms = int.Parse(Arguments[5]);
             float area = float.Parse(Arguments[6], System.Globalization.CultureInfo.InvariantCulture);
+            if (price <= 0) { Console.WriteLine("Price must be positive"); return null; }                                                                                                                                  
+            if (area <= 0)  { Console.WriteLine("Area must be positive"); return null; }                                                                                                                                   
+            if (rooms <= 0) { Console.WriteLine("Rooms must be positive"); return null; }
             switch (hType)
             {
                 case HousingType.house:

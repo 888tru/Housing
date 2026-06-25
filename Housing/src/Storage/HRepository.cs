@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿
 using System.Text.Json;
 
 public class HRepository : IStorage
@@ -16,7 +16,7 @@ public class HRepository : IStorage
         }
         housing.Id = id++;
         arrHousing.Add(housing);
-        SaveToFile.saveToFile(arrHousing);
+        SaveToFile.Save(arrHousing);
         return "Succesfully added!";
     }
 
@@ -27,29 +27,29 @@ public class HRepository : IStorage
         if (index >= 0)
         {
             arrHousing[index] = newHousing;
+            SaveToFile.Save(arrHousing);
             return $"Updated where id is {id}";
         } 
         else
         {
-            Console.WriteLine("Not found");
             return $"Not found with id: {id}";
         }
     }
 
     public string DeleteHousing(int id) {
         int elementsCount = arrHousing.RemoveAll(h => h.Id == id);
-        if (elementsCount == 0) return "Not Found";
-        else return "Deleted";
+        
+        if (elementsCount == 0) return $"house with this id:{id} not exists";
+        else
+        {
+            SaveToFile.Save(arrHousing);
+            return "Deleted";
+        }
     }
     public Housing GetHousing(int id)
     {
         Housing housing = arrHousing.FirstOrDefault(h => h.Id == id);
-        if (housing != null) return housing;
-        else
-        {
-            Console.WriteLine("Not found");
-            return null;
-        }
+        return housing;
     }
     public List<Housing> GetAllHousing()
     {
@@ -66,6 +66,7 @@ public class HRepository : IStorage
         string jsonString = File.ReadAllText(filePath);
         var loaded = JsonSerializer.Deserialize<List<Housing>>(jsonString);
         arrHousing = loaded ?? new List<Housing>();
+        id = arrHousing.Count > 0 ? arrHousing.Max(h => h.Id) + 1 : 0;
         return "Data loaded successfully.";
     }
 }
