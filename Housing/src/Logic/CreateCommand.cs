@@ -4,29 +4,13 @@
 public class CreateCommand : ILogic
 {
 
-    public HRepository repo;
-    public Housing hous;
 
-
-    public void CreateHandler(HRepository repository)
+    public  void Execute(IStorage repository)
     {
 
         // примерно будет вызываться в switc
-        repo = repository;
-        WorkWithRepo();
+        Housing hous = ArgsHandler.TypeChoosing();
+        repository.CreateHousing(hous);
     }
-    public void WorkWithRepo()
-
-    {
-        hous = ArgsHandler.TypeChoosing();
-        if (hous == null)
-        {
-            Console.WriteLine("Hous is null");
-            return;
-        }
-
-
-            repo.CreateHousing(hous);
-
-    }
+  
 }

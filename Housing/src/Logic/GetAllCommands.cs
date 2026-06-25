@@ -1,13 +1,8 @@
 ﻿public class GetAllCommands : ILogic
 {
-    public HRepository repo;
-    public void GetAllHandler(HRepository repository)
+    public void Execute(IStorage repository)
     {
-        repo = repository;
-        WorkWithRepo();
+        Console.WriteLine(repository.GetAllHousing());
     }
-    public void WorkWithRepo()
-    {
-        Console.WriteLine(repo.GetAllHousing());
-    }
+
 }

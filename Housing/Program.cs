@@ -20,28 +20,42 @@ public class Program
                 switch (whichCommand)
                 {
                     case "1":
-                        ILogic createCommand = new CreateCommand();
-                        createCommand.CreateHandler(repository);
-                        break;
+                        {
+                            CreateCommand command = new CreateCommand();
+                            command.Execute(repository);
+                            break;
+                        }
                     case "2":
-                        GetCommand getCommand = new GetCommand();
-                        getCommand.GetHandller(repository);
-                        break;
+                        {
+                            GetCommand command = new GetCommand();
+                            command.Execute(repository);
+                            break;
+                        }
                     case "3":
-                        GetAllCommands getAllCommand = new GetAllCommands();
-                        getAllCommand.GetAllHandler(repository);
-                        break;
+                        {
+                            GetAllCommands command = new GetAllCommands();
+                            command.Execute(repository);
+                            break;
+                        }
+                
                     case "4":
-                        UpdateCommands updateCommands = new UpdateCommands();
-                        updateCommands.UpdateHandler(repository);
-                        break;
+                        {
+                            UpdateCommands commands = new UpdateCommands();
+                            commands.Execute(repository);
+                            break;
+                        }
                     case "5":
-                        DeleteCommand deleteCommand = new DeleteCommand();
-                        deleteCommand.DeleteHandler(repository);
-                        break;
+                        {
+                            DeleteCommand command = new DeleteCommand();
+                            command.Execute(repository);
+                            break;
+                        }
+                  
                     case "6":
-                        HelpCommands.HelpHandler();
-                        break;
+                        {
+                            HelpCommands.Execute();
+                            break;
+                        }
                     case "7":
                         Console.WriteLine("Exiting the program.");
                         return;

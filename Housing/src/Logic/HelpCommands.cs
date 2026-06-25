@@ -1,10 +1,7 @@
 ﻿public class HelpCommands
 {
-    public static void HelpHandler()
-    {
-        WorkWithRepo();
-    }
-    public static void WorkWithRepo()
+
+    public static void Execute()
     {
         Console.WriteLine("Welcome to the Housing Management Application!");
         Console.WriteLine("Here are the available commands and how to use them:");

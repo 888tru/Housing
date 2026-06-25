@@ -1,4 +1,4 @@
-﻿public interface ILogic
+﻿public  interface ILogic
 {
-    void WorkWithRepo();
+    void Execute(IStorage repository);
 }  
