@@ -2,30 +2,27 @@
 
 public class ArgsHandler
 {
-    public static Housing TypeChoosing(string[] strings)
+    public static Housing TypeChoosing(string[] args)
     {
         try
         {
-            string[] Arguments = strings;
-            if (Arguments.Length < 8)
-            {
-                Console.WriteLine("Not enough arguments");
-                return null;
-            }
-            HousingType hType = Enum.Parse<HousingType>(Arguments[0]);
-            string country = Arguments[1];
-            string city = Arguments[2];
-            string region = Arguments[3];
-            int price = int.Parse(Arguments[4]);
-            int rooms = int.Parse(Arguments[5]);
-            float area = float.Parse(Arguments[6], System.Globalization.CultureInfo.InvariantCulture);
-            if (price <= 0) { Console.WriteLine("Price must be positive"); return null; }                                                                                                                                  
-            if (area <= 0)  { Console.WriteLine("Area must be positive"); return null; }                                                                                                                                   
-            if (rooms <= 0) { Console.WriteLine("Rooms must be positive"); return null; }
+            var dict = FlagParser.FlagParse(args);
+            //if (Arguments.Length < 8)
+            //{
+            //    Console.WriteLine("Not enough arguments");
+            //    return null;
+            //}
+            HousingType hType = Enum.Parse<HousingType>(dict["-t"]);
+            string country = dict["-co"];
+            string city = dict["-c"];
+            string region = dict["-r"];
+            if(int.TryParse(dict["-p"], out int price) || price < 0); Console.WriteLine("Please enter price number in int-possitive format!");
+            if (!int.TryParse(dict["-ro"], out int rooms) || rooms < 1) Console.WriteLine("Please enter room number in int-possitive format!");
+            if (!float.TryParse(dict["-a"], System.Globalization.CultureInfo.InvariantCulture, out float area)) Console.WriteLine("Please enter area in float format!");
             switch (hType)
             {
                 case HousingType.house:
-                    int houseFloors = int.Parse(Arguments[7]);
+                    if (!int.TryParse(dict["-hf"], out int houseFloors) || houseFloors < 1) Console.WriteLine("Enter the number of floors in house correctly(possitive and int)");
                     float landArea = float.Parse(Arguments[8], System.Globalization.CultureInfo.InvariantCulture);
                     Housing house = new Houses(hType, country, city, region, price, rooms, area, houseFloors, landArea);
                     return house;

@@ -24,6 +24,8 @@ public class Program
 
                     string whichCommand = parts[0];
                     string[] Argumets = parts.Skip(1).ToArray();
+                    FlagParser.FlagParse(Argumets);
+                    foreach(var k in )
 
 
 
