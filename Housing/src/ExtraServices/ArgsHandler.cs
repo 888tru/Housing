@@ -21,7 +21,7 @@ public class ArgsHandler
             if (!int.TryParse(FlagParser.GetRequared("ro", dict), out int rooms) || rooms < 1) 
                 throw new ArgumentException("Please enter price number in int-possitive format!");
 
-            if (!float.TryParse(FlagParser.GetRequared("a", dict), System.Globalization.CultureInfo.InvariantCulture, out float area)) 
+            if (!float.TryParse(FlagParser.GetRequared("a", dict), System.Globalization.CultureInfo.InvariantCulture, out float area) || area <= 0) 
                 throw new ArgumentException("Please enter price number in int-possitive format!");
 
             switch (hType)
