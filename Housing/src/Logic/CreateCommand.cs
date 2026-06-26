@@ -12,6 +12,7 @@ public class CreateCommand : ILogic
         Housing hous = ArgsHandler.TypeChoosing(Arguments);
         string result =  repository.CreateHousing(hous);
         Console.WriteLine(result);
+        Console.WriteLine();
     }
   
 }

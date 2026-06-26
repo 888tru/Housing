@@ -60,6 +60,19 @@ public class Program
                             command.Execute(repository, Argumets);
                             break;
                         }
+                        case "/deleteAll":
+                        {
+                            DeleteAll command = new DeleteAll();
+                            command.Execute(repository, Argumets);
+                            break;
+                        }
+                    case "deleteType":
+                        {
+                            DeleteAllTypeCommand command = new DeleteAllTypeCommand();
+                            command.Execute(repository, Argumets);
+                            break;
+                        }
+
 
                         case "/help":
                         {

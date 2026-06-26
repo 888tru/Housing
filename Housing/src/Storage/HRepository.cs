@@ -69,4 +69,21 @@ public class HRepository : IStorage
         id = arrHousing.Count > 0 ? arrHousing.Max(h => h.Id) + 1 : 0;
         return "Data loaded successfully.";
     }
+
+    public string DeleteAllHousing()
+    {
+        arrHousing.Clear();
+        return "Now storage is empty";
+    }
+    public string DeleteHousingByType(HousingType type)
+    {
+        int elementsCount = arrHousing.RemoveAll(h => h.Type == type);
+       
+        if (elementsCount == 0) return $"housings with this type:{type} not exists";
+        else
+        {
+            SaveToFile.Save(arrHousing);
+            return "Deleted";
+        }
+    }
 }
