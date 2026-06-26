@@ -14,6 +14,7 @@
     public override string ToString() => $"""
     [ Информация об объекте ]
     ---------------------------------
+    ID:           {Id}
     Тип:          {Type}
     Локация:      {Country}, {Region}, {City}
     Цена:         {Price:N0} KZT

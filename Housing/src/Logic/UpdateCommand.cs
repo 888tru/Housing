@@ -6,16 +6,14 @@ public class UpdateCommands : ILogic
     public void Execute(IStorage repository, string[] args)
 
     {
-        //  пока хзз как реализовать , но нужно будет передавать в метод UpdateHousing id и housing, который мы хотим обновить
-        Console.Write("Enter ID to update: ");
-        if (int.TryParse(Console.ReadLine(), out int id))
-        {
-            Housing hous = ArgsHandler.TypeChoosing(args);
-            repository.UpdateHousing(id, hous);
+        var dict = FlagParser.FlagParse(args);
+        if (!int.TryParse(dict["id"], out int id)) {
+            throw new ArgumentException("please enter correct id");
         }
         else
         {
-            Console.WriteLine("Please enter integer");
+            Housing hous = ArgsHandler.TypeChoosing(args);
+            repository.UpdateHousing(id, hous);
         }
 
 

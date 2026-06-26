@@ -7,32 +7,47 @@ public class ArgsHandler
         try
         {
             var dict = FlagParser.FlagParse(args);
-            //if (Arguments.Length < 8)
-            //{
-            //    Console.WriteLine("Not enough arguments");
-            //    return null;
-            //}
-            HousingType hType = Enum.Parse<HousingType>(dict["-t"]);
-            string country = dict["-co"];
-            string city = dict["-c"];
-            string region = dict["-r"];
-            if(int.TryParse(dict["-p"], out int price) || price < 0); Console.WriteLine("Please enter price number in int-possitive format!");
-            if (!int.TryParse(dict["-ro"], out int rooms) || rooms < 1) Console.WriteLine("Please enter room number in int-possitive format!");
-            if (!float.TryParse(dict["-a"], System.Globalization.CultureInfo.InvariantCulture, out float area)) Console.WriteLine("Please enter area in float format!");
+
+            if(!Enum.TryParse<HousingType>(FlagParser.GetRequared("t", dict), out HousingType hType)) 
+                throw new ArgumentException("Please enter in format!");
+
+            string country = FlagParser.GetRequared("co", dict);
+            string city = FlagParser.GetRequared("c", dict);
+            string region = FlagParser.GetRequared("r", dict);
+
+            if(!int.TryParse(FlagParser.GetRequared("p", dict), out int price) || price <= 0) 
+                throw new ArgumentException("Please enter price number in int-possitive format!");
+
+            if (!int.TryParse(FlagParser.GetRequared("ro", dict), out int rooms) || rooms < 1) 
+                throw new ArgumentException("Please enter price number in int-possitive format!");
+
+            if (!float.TryParse(FlagParser.GetRequared("a", dict), System.Globalization.CultureInfo.InvariantCulture, out float area)) 
+                throw new ArgumentException("Please enter price number in int-possitive format!");
+
             switch (hType)
             {
                 case HousingType.house:
-                    if (!int.TryParse(dict["-hf"], out int houseFloors) || houseFloors < 1) Console.WriteLine("Enter the number of floors in house correctly(possitive and int)");
-                    float landArea = float.Parse(Arguments[8], System.Globalization.CultureInfo.InvariantCulture);
+                    if (!int.TryParse(FlagParser.GetRequared("hf", dict), out int houseFloors) || houseFloors < 1) 
+                        throw new ArgumentException("Please enter price number in int-possitive format!");
+
+                    if (!float.TryParse(FlagParser.GetRequared("ld", dict), System.Globalization.CultureInfo.InvariantCulture, out float landArea) || landArea < 0) 
+                        throw new ArgumentException("Please enter price number in int-possitive format!");
+
                     Housing house = new Houses(hType, country, city, region, price, rooms, area, houseFloors, landArea);
                     return house;
 
                 case HousingType.flat:
-                    int floors = int.Parse(Arguments[7]);
-                    string resCompName = Arguments[8];
-                    ResComplxType resComplxType = Enum.Parse<ResComplxType>(Arguments[9]);
-                    Housing flat = new Flats(hType, country, city, region, price, rooms, area, floors, resCompName, resComplxType);
+                    if (!int.TryParse(FlagParser.GetRequared("f", dict), out int floors) || floors < 1) 
+                        throw new ArgumentException("Please enter price number in int-possitive format!");
+
+                    string resCompName = FlagParser.GetRequared("rcn", dict);
+
+                    if(!Enum.TryParse<ResComplxType>(FlagParser.GetRequared("rct", dict), out ResComplxType resComplx)) 
+                        throw new ArgumentException("Please enter complex type in correct format!");
+
+                    Housing flat = new Flats(hType, country, city, region, price, rooms, area, floors, resCompName, resComplx);
                     return flat;
+
                 default:
                     Console.WriteLine("Invalid housing type");
                     return null;

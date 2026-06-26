@@ -15,6 +15,7 @@
     public override string ToString() => $"""
     [ Информация об объекте ]
     ---------------------------------
+    ID:           {Id}
     Тип:          {Type}
     ЖК:           {ResCompName} ({ResComplxType})
     Локация:      {Country}, {Region}, {City}

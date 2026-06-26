@@ -2,24 +2,51 @@
 {
     public static void PrintCommands()
     {
-        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║            УПРАВЛЕНИЕ ЖИЛЫМИ ПОМЕЩЕНИЯМИ — КОМАНДЫ            ║");
-        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝");
         Console.WriteLine();
-        Console.WriteLine(" ОПЕРАЦИИ С ДАННЫМИ:");
-        Console.WriteLine("  /add       — добавить новое жилое помещение");
-        Console.WriteLine("  /get       — получить помещение по ID");
-        Console.WriteLine("  /getAll    — показать все помещения");
-        Console.WriteLine("  /update    — обновить помещение по ID");
-        Console.WriteLine("  /delete    — удалить помещение по ID");
-        Console.WriteLine("  /deleteAll — удалить все помещения");
-        Console.WriteLine("  /deleteType — удалить все помещения определённого типа");
+        Console.WriteLine("+----------------------------------------------------------------------------+");
+        Console.WriteLine("|            УПРАВЛЕНИЕ ЖИЛЫМИ ПОМЕЩЕНИЯМИ - КОМАНДЫ                         |");
+        Console.WriteLine("+----------------------------------------------------------------------------+");
         Console.WriteLine();
-        Console.WriteLine(" СИСТЕМА:");
-        Console.WriteLine("  /load      — загрузить данные из JSON хранилища");
-        Console.WriteLine("  /help      — подробная справка по командам");
-        Console.WriteLine("  /exit      — выход из приложения");
+
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine("| ОСНОВНЫЕ ОПЕРАЦИИ                                                       |");
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine("|                                                                         |");
+        Console.WriteLine("|  /add        - Добавить новое помещение                                 |");
+        Console.WriteLine("|  /get        - Получить помещение по ID                                 |");
+        Console.WriteLine("|  /getAll     - Показать все помещения                                   |");
+        Console.WriteLine("|  /update     - Обновить данные помещения                                |");
+        Console.WriteLine("|  /delete     - Удалить помещение по ID                                  |");
+        Console.WriteLine("|                                                                         |");
+        Console.WriteLine("+-------------------------------------------------------------------------+");
         Console.WriteLine();
-        Console.Write("Введите команду (например: /help для справки): ");
+
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine("| РАСШИРЕННЫЕ ОПЕРАЦИИ                                                    |");
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine("|                                                                         |");
+        Console.WriteLine("|  /deleteAll  - Удалить ВСЕ помещения (необратимо!)                      |");
+        Console.WriteLine("|  /deleteType - Удалить все помещения по типу (house/flat)               |");
+        Console.WriteLine("|                                                                         |");
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine();
+
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine("| СИСТЕМА                                                                 |");
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine("|                                                                         |");
+        Console.WriteLine("|  /load       - Загрузить данные из JSON файла                           |");
+        Console.WriteLine("|  /help       - Подробная справка по всем командам                       |");
+        Console.WriteLine("|  /exit       - Выход из приложения                                      |");
+        Console.WriteLine("|                                                                         |");
+        Console.WriteLine("+-------------------------------------------------------------------------+");
+        Console.WriteLine();
+        Console.WriteLine("Доступные флаги: -t | -co | -c | -r | -p | -ro | -a | -hf | -ld | -f | -rcn | -rct");
+        Console.WriteLine();
+
+        Console.WriteLine("Введите /help для полной справки с примерами команд и описанием флагов");
+        Console.WriteLine("Например: /help");
+        Console.WriteLine();
+        Console.Write("Введите команду: ");
     }
 }

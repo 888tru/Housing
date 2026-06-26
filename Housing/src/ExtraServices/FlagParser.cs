@@ -36,5 +36,15 @@ public class FlagParser
         if (char.IsLetter(token[1])) return true;
         else return false;
     }
+
+    public static string GetRequared(string flag, Dictionary<string, string> dict)
+    {
+        if (dict.TryGetValue(flag, out string value))
+        {
+            return value;
+        }
+        else throw new ArgumentException("There is now correct flag");
+
+    }
     
 }
