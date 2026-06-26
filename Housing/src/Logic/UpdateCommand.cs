@@ -7,7 +7,7 @@ public class UpdateCommands : ILogic
 
     {
         var dict = FlagParser.FlagParse(args);
-        if (!int.TryParse(dict["id"], out int id)) {
+        if (!int.TryParse(FlagParser.GetRequared("id", dict), out int id) || id < 0) {
             throw new ArgumentException("please enter correct id");
         }
         else
